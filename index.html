@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
-            --brand-green: #004b39; 
+            --brand-green: #004b39;
             --brand-gold: #c5a358;
             --white: #ffffff;
         }
@@ -13,77 +13,77 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Helvetica Neue', Arial, sans-serif;
             background-color: #f4f4f4;
         }
 
-        /* Container หลัก ปรับตามความกว้างหน้าจอ */
         .banner-card {
             position: relative;
             width: 100%;
+            max-width: 100%; /* ให้ขยายเต็มจอตามรูป */
             margin: 0 auto;
-            line-height: 0; /* ป้องกันช่องว่างใต้รูปภาพ */
+            line-height: 0;
         }
 
-        /* ตัวครอบรูปภาพ - ไม่ Fix สัดส่วนแล้ว */
         .image-container {
             position: relative;
             width: 100%;
-            height: auto;
+            display: inline-block;
         }
 
         .image-container img {
             width: 100%;
-            height: auto; /* ให้สูงตามสัดส่วนจริงของไฟล์รูปภาพ */
+            height: auto;
             display: block;
         }
 
-        /* กลุ่มปุ่มที่ทับอยู่บนรูปภาพ */
+        /* กลุ่มปุ่ม: ใช้ % เพื่อให้ตำแหน่งคงที่ตามการย่อขยายของรูป */
         .action-group {
             position: absolute;
-            bottom: 5%; /* ระยะห่างจากขอบล่างของรูป */
+            bottom: 5%; /* ปรับค่า % ตรงนี้เพื่อให้ตรงกับแถบสีดำในรูปของคุณ */
             left: 50%;
             transform: translateX(-50%);
+            
             display: flex;
-            gap: 12px;
-            width: 90%;
-            max-width: 600px;
-            flex-direction: column; /* Mobile: แนวตั้ง */
-            line-height: normal; /* คืนค่า line-height ให้ตัวอักษร */
+            flex-direction: row; /* เรียงแถวเดียวกันเสมอ */
+            gap: 2%; /* ระยะห่างแบบ % เพื่อให้หดตามจอ */
+            width: 90%; /* ความกว้างกลุ่มปุ่มสัมพันธ์กับรูป */
+            max-width: 900px;
+            justify-content: center;
+            line-height: normal;
         }
 
         .btn {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 20px;
-            font-size: clamp(0.75rem, 3vw, 0.9rem);
+            
+            /* ใช้หน่วย vw (view width) หรือ % เพื่อให้ขนาดปุ่มย่อตามจอ */
+            padding: 3.5% 2%; 
+            font-size: clamp(21px, 2vw, 25px); /* ตัวอักษรหดได้แต่ไม่เล็กเกินไป */
+            
+            color: var(--white);
+            background-color: var(--brand-green);
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background-color: var(--brand-green);
-            color: var(--white);
-            border: 1px solid rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            white-space: nowrap; /* ป้องกันตัวอักษรตกบรรทัด */
+            transition: all 0.3s;
         }
 
         .btn:hover {
             background-color: var(--brand-gold);
         }
 
-        /* --- Responsive สำหรับหน้าจอใหญ่ --- */
-        @media (min-width: 768px) {
+        /* ปรับแต่งสำหรับมือถือเล็กพิเศษ */
+        @media (max-width: 480px) {
             .action-group {
-                flex-direction: row; /* Desktop: แนวนอน */
-                bottom: 8%; /* ขยับตำแหน่งขึ้นตามความเหมาะสมของจอใหญ่ */
-                max-width: 800px;
+                bottom: 4%; /* ขยับขึ้นลงตามสัดส่วนพื้นที่ดำในมือถือ */
+                gap: 5px;
             }
-
             .btn {
-                flex: 1; /* ให้ปุ่มกว้างเท่ากันในแนวนอน */
-                padding: 18px 25px;
+                padding: 8px 5px;
+                letter-spacing: 0;
             }
         }
     </style>
@@ -95,8 +95,8 @@
             <img src="(MAR)One-Touch-Flawless-Fit_Banner.jpg" alt="Covermark Banner">
             
             <div class="action-group">
-                <a class="btn">13 Mar - 30 Apr 2026</a>
-                <a class="btn">16 Mar - 30 Apr 2026</a>
+                <a class="btn" href="https://intranet-occ.com/Covermark/index.php?idcampaign=65">13 Mar - 30 Apr 2026</a>
+                <a class="btn" href="https://intranet-occ.com/Covermark/index.php?idcampaign=66">16 Mar - 30 Apr 2026</a>
             </div>
         </div>
     </div>
