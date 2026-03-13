@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --brand-gold: #c5a358;
+            --brand-dark: #1a1a1a;
+            --soft-gray: #e0e0e0;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f8f8f8;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Container หลัก */
+        .banner-card {
+            background: var(--white);
+            width: 100%;
+            max-width: 900px; /* ขนาดสูงสุดบน Desktop */
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* ล็อครูปภาพ 16:9 */
+        .image-container {
+            width: 100%;
+            aspect-ratio: 16 / 9; /* มาตรฐาน 16:9 */
+            background-color: var(--soft-gray);
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ส่วนของปุ่ม (Desktop: แนวนอน | Mobile: แนวตั้ง) */
+        .action-group {
+            display: flex;
+            gap: 16px;
+            /* ค่าเริ่มต้นคือแนวตั้งสำหรับ Mobile ตามหลัก Mobile-First */
+            flex-direction: column; 
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 24px;
+            font-size: 1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--brand-gold);
+            cursor: pointer;
+        }
+
+        /* ปุ่มที่ 1 (ซ้าย/บน) */
+        .btn-1 {
+            background-color: var(--soft-gray); /* ตามสีเทาในภาพร่าง */
+            color: var(--brand-dark);
+            border-color: transparent;
+        }
+
+        /* ปุ่มที่ 2 (ขวา/ล่าง) */
+        .btn-2 {
+            background-color: var(--soft-gray); /* ตามสีเทาในภาพร่าง */
+            color: var(--brand-dark);
+            border-color: transparent;
+        }
+
+        /* Hover Effect สไตล์ Covermark */
+        .btn:hover {
+            background-color: var(--brand-gold);
+            color: var(--white);
+        }
+
+        /* --- Media Query สำหรับ Desktop (หน้าจอกว้างกว่า 600px) --- */
+        @media (min-width: 600px) {
+            .action-group {
+                flex-direction: row; /* สลับเป็นแนวนอนตามภาพร่าง Desktop */
+                justify-content: flex-start;
+            }
+
+            .btn {
+                min-width: 180px; /* จำกัดความกว้างปุ่มไม่ให้ยาวไปบนจอใหญ่ */
+                flex: 0 1 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-card">
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfad4033c8?auto=format&fit=crop&q=80&w=1600" alt="Covermark Banner">
+        </div>
+
+        <div class="action-group">
+            <a href="#" class="btn btn-1">13 Mar 2026</a>
+            <a href="#" class="btn btn-2">16 Mar 2026</a>
+        </div>
+    </div>
+
+</body>
+</html>
