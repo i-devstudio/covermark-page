@@ -13,91 +13,97 @@
         body {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #000;
         }
 
-        .banner-card {
+        .banner-container {
             position: relative;
             width: 100%;
-            max-width: 100%; /* ให้ขยายเต็มจอตามรูป */
+            max-width: 1200px;
             margin: 0 auto;
             line-height: 0;
         }
 
-        .image-container {
-            position: relative;
-            width: 100%;
-            display: inline-block;
-        }
-
-        .image-container img {
+        .banner-container img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* กลุ่มปุ่ม: ใช้ % เพื่อให้ตำแหน่งคงที่ตามการย่อขยายของรูป */
-        .action-group {
+        /* กลุ่มปุ่ม: ขยายให้กว้างขึ้นและปรับตำแหน่ง */
+        .action-overlay {
             position: absolute;
-            bottom: 5%; /* ปรับค่า % ตรงนี้เพื่อให้ตรงกับแถบสีดำในรูปของคุณ */
+            bottom: 3%; /* ปรับลงมานิดหน่อยเพื่อให้ปุ่มที่ใหญ่ขึ้นไม่ไปทับโลโก้ */
             left: 50%;
             transform: translateX(-50%);
+            width: 96%; /* แผ่เกือบชิดขอบรูป */
             
-            display: flex;
-            flex-direction: row; /* เรียงแถวเดียวกันเสมอ */
-            gap: 2%; /* ระยะห่างแบบ % เพื่อให้หดตามจอ */
-            width: 90%; /* ความกว้างกลุ่มปุ่มสัมพันธ์กับรูป */
-            max-width: 900px;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px; /* เพิ่มระยะห่างระหว่างปุ่ม */
             line-height: normal;
         }
 
         .btn {
-            flex: 1;
+            background-color: var(--brand-green);
+            color: var(--white);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 700; /* ปรับตัวหนาขึ้น */
+            
+            /* ปรับขนาดตัวอักษรให้ใหญ่ขึ้น (Min 11px, Max 18px) */
+            font-size: clamp(15px, 3.5vw, 21px);
+            
+            /* เพิ่มความหนาของปุ่ม */
+            padding: 21px 5px; 
+            
+            border: 1px solid rgba(255,255,255,0.3);
+            white-space: nowrap;
             display: flex;
             align-items: center;
             justify-content: center;
-            
-            /* ใช้หน่วย vw (view width) หรือ % เพื่อให้ขนาดปุ่มย่อตามจอ */
-            padding: 3.5% 2%; 
-            font-size: clamp(21px, 2vw, 25px); /* ตัวอักษรหดได้แต่ไม่เล็กเกินไป */
-            
-            color: var(--white);
-            background-color: var(--brand-green);
-            text-decoration: none;
-            text-transform: uppercase;
-            border: 1px solid rgba(255,255,255,0.2);
-            white-space: nowrap; /* ป้องกันตัวอักษรตกบรรทัด */
-            transition: all 0.3s;
+            transition: all 0.2s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .btn:hover {
             background-color: var(--brand-gold);
         }
 
-        /* ปรับแต่งสำหรับมือถือเล็กพิเศษ */
-        @media (max-width: 480px) {
-            .action-group {
-                bottom: 4%; /* ขยับขึ้นลงตามสัดส่วนพื้นที่ดำในมือถือ */
+        /* สำหรับหน้าจอ Desktop */
+        @media (min-width: 768px) {
+            .action-overlay {
+                width: 90%;
+                gap: 20px;
+                bottom: 5%;
+            }
+            .btn {
+                padding: 22px 30px; /* ปุ่มใหญ่สะใจบนจอใหญ่ */
+                font-size: 20px;
+                border-width: 2px;
+            }
+        }
+
+        /* กรณีจอมือถือเล็กมากจริงๆ */
+        @media (max-width: 380px) {
+            .action-overlay {
                 gap: 5px;
             }
             .btn {
-                padding: 8px 5px;
-                letter-spacing: 0;
+                padding: 12px 2px;
+                letter-spacing: -0.5px; /* บีบตัวอักษรนิดหน่อยเพื่อไม่ให้ล้นปุ่ม */
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="banner-card">
-        <div class="image-container">
-            <img src="(MAR)One-Touch-Flawless-Fit_Banner.jpg" alt="Covermark Banner">
-            
-            <div class="action-group">
-                <a class="btn" href="https://intranet-occ.com/Covermark/index.php?idcampaign=65">13 Mar - 30 Apr 2026</a>
-                <a class="btn" href="https://intranet-occ.com/Covermark/index.php?idcampaign=66">16 Mar - 30 Apr 2026</a>
-            </div>
+    <div class="banner-container">
+        <img src="(MAR)One-Touch-Flawless-Fit_Banner.jpg" alt="Covermark Banner">
+        
+        <div class="action-overlay">
+            <a href="https://intranet-occ.com/Covermark/index.php?idcampaign=65" class="btn">13 MAR - 30 APR 2026</a>
+            <a href="https://intranet-occ.com/Covermark/index.php?idcampaign=66" class="btn">16 MAR - 30 APR 2026</a>
         </div>
     </div>
 
